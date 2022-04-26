@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>chat</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+        <link href="//by.bond/favicon/32x32.png" rel="shortcut icon" type="image/ico" />
+        <meta name="theme-color" content="#ffffff" />
+        <link rel="stylesheet" href="https://lepuslab.com/css/water-light.min.css">
+    </head>
+    <body>
+    	<h1>Chat</h1>
+        <h2>Peers</h2>
+        <p>
+            <span id="online-num">0</span> online <br>
+            <div id="users_list"></div>
+        </p>
+        
+        <h2>Message</h2>
+        <p id="msg"></p>
+
+        <h2>Speak</h2>
+        <p><span id="my-info"></span>:</p>
+        <textarea name="speak" id="speak" placeholder="I am a textarea..."></textarea>
+        <button type="button" id="broadcast">broadcast</button>
+        <h2>Action</h2>
+        <p>board id: <span id="world-id">connecting...</span></p>
+        <button type="button" id="refresh"> refresh my token </button>
+        <details>
+            <summary>danger</summary>
+            <button type="button" id="destroy"> destroy the board </button>
+        </details>
+        <script>
+            var user_id = "";
+        </script>
+        <script src="/crypto.js" type="text/javascript"></script>
+        <script src="/main.js" type="module"></script>
+    </body>
+</html>
