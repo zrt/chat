@@ -28,7 +28,7 @@ await signInAnonymously(auth)
 console.log(user_id);
 
 // realtime db
-import { getDatabase, ref, set, push, child, onValue, onChildAdded } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js"
+import { getDatabase, ref, set, push, child, onValue, onChildAdded, onDisconnect, remove } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js"
 
 
 // pubkey, privkey
@@ -90,6 +90,9 @@ if(user_id){
     document.getElementById('my-info').innerText = user_id + ' <' + await key_prefix(public_key_export) +'>';
     // build empty queue
     set(ref(db, 'messages/' + user_id), {});
+    // on disconnect
+    onDisconnect(ref(db, 'users/'+user_id)).remove();
+    onDisconnect(ref(db, 'messages/'+user_id)).remove();
 }
 
 // 2. monitor users
@@ -99,11 +102,19 @@ async function update_users_list(){
 
     var users_list = document.getElementById("users_list");
     users_list.innerText = "";
+    var flag = false;
+    var my_user_id = user_id;
     for(var user_id in users_data){
         var user = users_data[user_id];
         var li = document.createElement("li");
         li.innerText = user.name + ' <' + await key_prefix(user.pubkey) +'>';
         users_list.appendChild(li);
+        if(my_user_id === user_id){
+            flag = true;
+        }
+    }
+    if(!flag){
+        add_to_board('warning, you are not online');
     }
 }
 
