@@ -185,6 +185,13 @@ document.getElementById('broadcast').addEventListener('click', async () => {
     }
 });
 
+// ctrl or shift + enter
+document.getElementById('speak').addEventListener('keydown', (e) => {
+    if(e.keyCode === 13 && (e.ctrlKey || e.shiftKey)){
+        document.getElementById('broadcast').click();
+    }
+});
+
 // 5. destroy the world
 
 document.getElementById('refresh').addEventListener('click', () => {
