@@ -96,6 +96,7 @@ if(user_id){
 }
 
 // 2. monitor users
+var in_list = false;
 async function update_users_list(){
     var user_cnt = Object.keys(users_data).length;
     document.getElementById('online-num').innerText = user_cnt;
@@ -103,18 +104,26 @@ async function update_users_list(){
     var users_list = document.getElementById("users_list");
     users_list.innerText = "";
     var flag = false;
-    var my_user_id = user_id;
-    for(var user_id in users_data){
-        var user = users_data[user_id];
+    for(var uid in users_data){
+        var user = users_data[uid];
         var li = document.createElement("li");
         li.innerText = user.name + ' <' + await key_prefix(user.pubkey) +'>';
         users_list.appendChild(li);
-        if(my_user_id === user_id){
+        console.log(user_id);
+        console.log(uid);
+        console.log(user_id === uid);
+        if(user_id === uid){
             flag = true;
         }
     }
-    if(!flag){
-        add_to_board('warning, you are not online');
+    if(!in_list){
+        if(flag){
+            in_list = true;
+        }
+    }else{
+        if(!flag){
+            add_to_board('warning, you are not online');
+        }
     }
 }
 
@@ -123,7 +132,7 @@ onValue(users, (snapshot) => {
     const data = snapshot.val();
     users_data = data;
     update_users_list();
-    console.log(data);
+    // console.log(data);
 });
 
 
@@ -188,4 +197,4 @@ document.getElementById('destroy').addEventListener('click', () => {
 });
 
 // generate and update my data
-add_to_board("let's talk");
+add_to_board("Welcome!");
