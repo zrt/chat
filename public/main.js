@@ -116,6 +116,7 @@ async function update_users_list(){
             flag = true;
         }
     }
+    add_to_board('< ' +user_cnt + ' users online >');
     if(!in_list){
         if(flag){
             in_list = true;
