@@ -3,12 +3,12 @@ import { getAuth, signInAnonymously } from 'https://www.gstatic.com/firebasejs/9
 
 // register to db
 var firebaseConfig = {
-    apiKey: "AIzaSyBwq4rp9s_zrZf89kZ7cAg0ctAlJ754uwQ",
-    authDomain: "chat-by-bond.firebaseapp.com",
-    databaseURL: "https://chat-by-bond-default-rtdb.asia-southeast1.firebasedatabase.app/",
-    projectId: "chat-by-bond",
-    storageBucket: "chat-by-bond.appspot.com",
-    appId: "chat-by-bond",
+    apiKey: "AIzaSyBF7T-URIztNkhrICjPxWZpbA9iN0HVtl0",
+    authDomain: "chat-ruotian-dev.firebaseapp.com",
+    databaseURL: "https://chat-ruotian-dev-default-rtdb.asia-southeast1.firebasedatabase.app/",
+    projectId: "chat-ruotian-dev",
+    storageBucket: "chat-ruotian-dev.appspot.com",
+    appId: "chat-ruotian-dev",
 };
 
 const app = initializeApp(firebaseConfig);

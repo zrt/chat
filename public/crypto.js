@@ -29,7 +29,7 @@ function generateKey(alg, scope) {
   }
 
   function textToArrayBuffer(str) {
-    var buf = unescape(encodeURIComponent(str)) // 2 bytes for each char
+    var buf = decodeURIComponent(encodeURIComponent(str)) // 2 bytes for each char
     var bufView = new Uint8Array(buf.length)
     for (var i=0; i < buf.length; i++) {
       bufView[i] = buf.charCodeAt(i)
