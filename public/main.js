@@ -14,6 +14,8 @@ var firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 
+console.log('start');
+
 await signInAnonymously(auth)
   .then((result) => {
     //   console.log(result);
@@ -34,7 +36,7 @@ import { getDatabase, ref, set, push, child, onValue, onChildAdded, onDisconnect
 // pubkey, privkey
 const alg = {
     name: "RSA-OAEP",
-    modulusLength: 4096+256,
+    modulusLength: 4096,
     publicExponent: new Uint8Array([0x01, 0x00, 0x01]),
     hash: {name: "SHA-256"}
 }
